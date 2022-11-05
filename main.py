@@ -87,7 +87,10 @@ class User:
             bot.send_message(message.from_user.id, 'Введите цену заказа')
             self.data = 2
         elif self.data == 2:
-            self.checks.append(Create_Check(self.name, message.text, message.from_user.id, self.token))
+            try:
+                self.checks.append(Create_Check(self.name, message.text, message.from_user.id, self.token))
+            except:
+                self.send_message('Ошибка')
             name = ''
         elif self.data == 3:
             self.token = message.text
